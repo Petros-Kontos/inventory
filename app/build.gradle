@@ -15,6 +15,11 @@ plugins {
     id 'application'
 }
 
+eclipse {
+ sourceCompatibility=8
+ targetCompatibility=8
+}
+
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
