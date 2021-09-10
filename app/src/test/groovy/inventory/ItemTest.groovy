@@ -7,11 +7,14 @@ class ItemTest extends Specification {
 	def "name, serial no and value properties exist"() {
 		
 		setup:
-		def item = new Item("guitar", "skfh58eHGt", 49.99)
+		def name = "guitar"
+		def serialNo = "skfh58eHGt"
+		def value = 499.99
+		def item = new Item(name, serialNo, value)
 		
 		expect:
-		item.name == "guitar"
-		item.serialNo == "skfh58eHGt"
-		item.value == 49.99
+		item.name == name
+		item.serialNo == serialNo
+		item.value == value
 	}
 }
