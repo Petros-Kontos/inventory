@@ -19,4 +19,8 @@ public class Item {
 	public String getSerialNo() {
 		return serialNo;
 	}
+	
+	public double getValue() {
+		return value;
+	}
 }
