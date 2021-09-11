@@ -5,13 +5,18 @@ import java.io.IOException;
 
 public class Data {
 
-	public Data() {
-		File file = new File("src/test/resources/data.txt");
+	private String path;
+	
+	public Data(String path) {
+		
+		this.path = path;
+		
+		File file = new File(path);
 		try {
 			file.createNewFile();
 		}
 		catch (IOException e) {  
 		e.printStackTrace();
-		}         
+		}
 	}
 }
