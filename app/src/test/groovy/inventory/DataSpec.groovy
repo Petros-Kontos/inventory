@@ -8,12 +8,12 @@ class DataSpec extends Specification {
 	def data = new Data(path)
 	def file = new File(path)
 	
-	def "check if data file is created"() {
+	def "check data file creation"() {
 		expect:
 		file.exists() == true
 	}
 	
-	def "check if data file is deleted"() {
+	def "check data file deletion"() {
 		setup:
 		file.delete()
 		
