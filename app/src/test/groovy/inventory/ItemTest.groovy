@@ -6,6 +6,7 @@ class ItemTest extends Specification {
 	
 	def "file contents match constructor arguments"() {
 		
+<<<<<<< HEAD
 		given:
 		def name = "guitar"
 		def serialNo = "skfh58eHGt"
@@ -38,5 +39,17 @@ class ItemTest extends Specification {
 		
 		expect:
 		dataFile.text == name + "," + serialNo + "," + value + '\n'
+=======
+		setup:
+		def name = "guitar"
+		def serialNo = "skfh58eHGt"
+		def value = 499.99
+		def item = new Item(name, serialNo, value)
+		
+		expect:
+		item.name == name
+		item.serialNo == serialNo
+		item.value == value
+>>>>>>> tmp
 	}
 }
