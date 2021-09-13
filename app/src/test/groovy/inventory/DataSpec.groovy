@@ -9,15 +9,15 @@ class DataSpec extends Specification {
 	def file = new File(path)
 	
 	def "check data file creation"() {
-		expect:
+		expect: "data file has been created"
 		file.exists() == true
 	}
 	
 	def "check data file deletion"() {
-		setup:
+		setup: "delete the data file"
 		file.delete()
 		
-		expect:
+		expect: "data file has been deleted"
 		file.exists() == false
 	}
 }
