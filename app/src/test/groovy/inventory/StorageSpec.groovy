@@ -33,7 +33,7 @@ class StorageSpec extends Specification {
 
 		then: 'an exception in thrown'
 		def e = thrown(StorageInternalFileCreationError.class)
-		e.message == 'java.io.IOException: No such file or directory'
+		e.message == 'java.io.IOException: The system cannot find the path specified'
 	}
 
 
