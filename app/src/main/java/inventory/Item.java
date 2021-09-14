@@ -1,8 +1,5 @@
 package inventory;
 
-import java.io.FileWriter;
-
-
 public class Item {
 	
 	private String name;
@@ -14,15 +11,6 @@ public class Item {
 		this.name = name;
 		this.serialNo = serialNo;
 		this.value = value;
-	     
-		try {
-	       FileWriter output = new FileWriter("inventory.txt", true);
-	       output.write(name + "," + serialNo + "," + value + '\n');
-	       output.close();
-	     }
-	     catch (Exception e) {
-	       e.getStackTrace();
-	     }
 	}
 	
 	public String getName() {
