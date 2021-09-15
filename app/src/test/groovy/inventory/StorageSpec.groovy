@@ -28,7 +28,7 @@ class StorageSpec extends Specification {
 		given: 'an invalid path'
 		String invalidPath = "a/b/c/d.txt"
 
-		when: 'creating a new storage'
+		when: 'creating a new storage object'
 		new Storage(invalidPath)
 
 		then: 'an exception in thrown'
