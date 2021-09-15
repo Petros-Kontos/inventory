@@ -8,9 +8,6 @@ import spock.lang.Specification
 
 class StorageSpec extends Specification {
 
-	static final String path = "src/test/resources/data.txt"
-	def data = new Storage(path)
-
 	static final String NON_EXISTING_PATH = 'src/test/resources/nonExistingFile.txt'
 
 	def 'a Storage object creates a file on disk if it does not exist'() {
@@ -40,17 +37,17 @@ class StorageSpec extends Specification {
 		def name = "Buddha statue"
 		def serialNo = "kdhfo8374HLKD"
 		def value = 69.99
+		Storage storage  = new Storage(NON_EXISTING_PATH)
 
 		when:
-		data.append(name, serialNo, value)
+		storage.append(name, serialNo, value)
 
 		then:
-		data.read() == name + "," + serialNo + "," + value
+		storage.read() == name + "," + serialNo + "," + value
 	}
 
 	def cleanupSpec() {
 		new File(NON_EXISTING_PATH).delete()
-		new File(path).delete()
 	}
 
 
