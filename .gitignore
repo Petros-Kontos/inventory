@@ -4,6 +4,7 @@
 # Ignore Gradle build output directory
 build
 
+app/src/test/resources/data.txt
 app/.classpath
 app/.project
 app/.settings/
