@@ -8,7 +8,7 @@ import spock.lang.Specification
 
 class StorageSpec extends Specification {
 
-	def path = "src/test/resources/data.txt"
+	static final String path = "src/test/resources/data.txt"
 	def data = new Storage(path)
 	def file = new File(path)
 
@@ -36,8 +36,6 @@ class StorageSpec extends Specification {
 		e.message == 'java.io.IOException: The system cannot find the path specified'
 	}
 
-
-	@Ignore
 	def "append 1 item"() {
 		setup:
 		def name = "Buddha statue"
@@ -45,14 +43,15 @@ class StorageSpec extends Specification {
 		def value = 69.99
 
 		when:
-		data.append(name, serialNo, value)
+		data.append(name, serialNo, value, path)
 
 		then:
-		data.read() == name + "," + serialNo + "," + value + '\n'
+		data.read(path) == name + "," + serialNo + "," + value
 	}
 
 	def cleanupSpec() {
 		new File(NON_EXISTING_PATH).delete()
+		new File(path).delete()
 	}
 
 
