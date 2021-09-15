@@ -43,10 +43,10 @@ class StorageSpec extends Specification {
 		def value = 69.99
 
 		when:
-		data.append(name, serialNo, value, path)
+		data.append(name, serialNo, value)
 
 		then:
-		data.read(path) == name + "," + serialNo + "," + value
+		data.read() == name + "," + serialNo + "," + value
 	}
 
 	def cleanupSpec() {
