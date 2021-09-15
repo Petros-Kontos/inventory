@@ -10,7 +10,6 @@ class StorageSpec extends Specification {
 
 	static final String path = "src/test/resources/data.txt"
 	def data = new Storage(path)
-	def file = new File(path)
 
 	static final String NON_EXISTING_PATH = 'src/test/resources/nonExistingFile.txt'
 
