@@ -32,17 +32,17 @@ class StorageSpec extends Specification {
 		e.message == 'java.io.IOException: The system cannot find the path specified'
 	}
 
-	def "append 1 item"() {
-		setup:
+	def 'append 1 line/item to a new file'() {
+		given: 'a new storage object'
 		def name = "Buddha statue"
 		def serialNo = "kdhfo8374HLKD"
 		def value = 69.99
 		Storage storage  = new Storage(NON_EXISTING_PATH)
 
-		when:
+		when: 'appending the item properties as a new line'
 		storage.append(name, serialNo, value)
 
-		then:
+		then: 'we can read the new line from the file'
 		storage.read() == name + "," + serialNo + "," + value
 	}
 
