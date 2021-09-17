@@ -2,6 +2,7 @@ package inventory
 
 import java.awt.image.ImagingOpException
 
+import java.io.File;
 import spock.lang.Ignore
 import spock.lang.IgnoreRest
 import spock.lang.Specification
@@ -9,6 +10,8 @@ import spock.lang.Specification
 class StorageSpec extends Specification {
 
 	static final String NON_EXISTING_PATH = 'src/test/resources/nonExistingFile.txt'
+	static final String EXISTING_PATH = 'src/test/resources/existingFile.txt'
+	static final File file = new File(EXISTING_PATH)
 
 	def 'a Storage object creates a file on disk if it does not exist'() {
 		when: 'creating a new Storage for a new file path'
@@ -18,8 +21,22 @@ class StorageSpec extends Specification {
 		(new File(NON_EXISTING_PATH)).exists() == true
 	}
 
-	//TODO write a spec for an existing file
-
+	def 'a Storage object is instantiated and given a path to a file that already exists'() {
+		given: 'an existing storage file'
+		file.createNewFile()
+		def name = "Buddha statue"
+		def serialNo = "kdhfo8374HLKD"
+		def value = 69.99
+		new FileWriter(EXISTING_PATH, true).with {
+			write(name + "," + serialNo + "," + value + '\n')
+			flush()
+		}
+		when:
+		def storage = new Storage(EXISTING_PATH)
+		then:
+		new Scanner(file).nextLine() == name + "," + serialNo + "," + value
+	}
+	
 	def 'a problem occurs when creating a Storage object'() {
 		given: 'an invalid path'
 		String invalidPath = "a/b/c/d.txt"
@@ -42,12 +59,13 @@ class StorageSpec extends Specification {
 		when: 'appending the item properties as a new line'
 		storage.append(name, serialNo, value)
 
-		then: 'we can read the new line from the file'
+		then: 'the new line is read from the file'
 		storage.read() == name + "," + serialNo + "," + value
 	}
 
 	def cleanupSpec() {
 		new File(NON_EXISTING_PATH).delete()
+		file.delete()
 	}
 
 
