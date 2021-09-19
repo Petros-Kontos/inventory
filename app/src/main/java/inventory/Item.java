@@ -6,6 +6,12 @@ public class Item {
 	private String serialNo;
 	private double value;
 	
+	/**
+	 * 
+	 * @param name
+	 * @param serialNo
+	 * @param value
+	 */
 	public Item(String name, String serialNo, double value) {
 		
 		this.name = name;
