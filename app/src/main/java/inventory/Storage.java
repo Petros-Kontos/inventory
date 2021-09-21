@@ -7,28 +7,22 @@ import java.util.Scanner;
 import java.io.IOException;
 
 public class Storage {
-	
+
 	private String path;
 
 	/**
-	 * 
+	 *
 	 * @param path
 	 * @throws IOException
 	 */
 	public Storage(String path) throws IOException {
 		File file = new File(path);
 		this.path = path;
-		
-		try {
-			file.createNewFile();
-		}
-		catch (IOException e) {
-			throw new StorageInternalFileCreationError(e);
-		}
+		file.createNewFile();
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param name
 	 * @param serialNo
 	 * @param value
@@ -39,9 +33,9 @@ public class Storage {
 		fw.append(name + "," + serialNo + "," + value + '\n');
 		fw.close();
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @return
 	 * @throws FileNotFoundException
 	 */

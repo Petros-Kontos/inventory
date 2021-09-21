@@ -36,7 +36,7 @@ class StorageSpec extends Specification {
 		then:
 		new Scanner(file).nextLine() == name + "," + serialNo + "," + value
 	}
-	
+
 	def 'a problem occurs when creating a Storage object'() {
 		given: 'an invalid path'
 		String invalidPath = "a/b/c/d.txt"
@@ -45,8 +45,7 @@ class StorageSpec extends Specification {
 		new Storage(invalidPath)
 
 		then: 'an exception in thrown'
-		def e = thrown(StorageInternalFileCreationError.class)
-		e.message == 'java.io.IOException: The system cannot find the path specified'
+		thrown(IOException.class)
 	}
 
 	def 'append 1 line/item to a new file'() {
