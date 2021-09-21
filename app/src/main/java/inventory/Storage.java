@@ -22,30 +22,34 @@ public class Storage {
 	}
 
 	/**
+	 * Save an item to a CSV format in a file.
 	 *
-	 * @param name
-	 * @param serialNo
-	 * @param value
-	 * @throws IOException
+	 * @param item the item to be stored
+	 * @throws IOException if a problem occurs during the save process
 	 */
-	public void append(String name, String serialNo, double value) throws IOException {
+	public void append(Item item) throws IOException {
 		FileWriter fw = new FileWriter(path);
-		fw.append(name + "," + serialNo + "," + value + '\n');
+		fw.append(itemToCsv(item));
 		fw.close();
 	}
 
-	/**
-	 *
-	 * @return
-	 * @throws FileNotFoundException
-	 */
-	public String read() throws FileNotFoundException {
-		File file = new File(path);
-		Scanner scanner = new Scanner(file);
-		String data = scanner.nextLine();
-		scanner.close();
-		return data;
+	private String itemToCsv(Item item) {
+		return String.format("%s,%s,%s", item.getName(), item.getSerialNo(), item.getValue());
+//		return item.getName() + "," + item.getSerialNo() + "," + item.getValue() + '\n';
 	}
+
+//	/**
+//	 *
+//	 * @return
+//	 * @throws FileNotFoundException
+//	 */
+//	public String read() throws FileNotFoundException {
+//		File file = new File(path);
+//		Scanner scanner = new Scanner(file);
+//		String data = scanner.nextLine();
+//		scanner.close();
+//		return data;
+//	}
 }
 
 
