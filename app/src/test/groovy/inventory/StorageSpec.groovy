@@ -47,7 +47,7 @@ class StorageSpec extends Specification {
 		and: 'a Storage object linked to a new file'
 		Storage storage  = new Storage(NON_EXISTING_PATH)
 
-		when: 'appending the item to the storage'
+		when: 'appending the item to storage'
 		storage.append(item)
 
 		then: 'the file linked to the storage contains this item in csv format'
@@ -62,7 +62,7 @@ class StorageSpec extends Specification {
 		and: 'a Storage object linked to a new file'
 		Storage storage  = new Storage(NON_EXISTING_PATH)
 
-		when: 'appending the item to the storage'
+		when: 'appending the items to storage'
 		storage.append(item_1)
 		storage.append(item_2)
 
