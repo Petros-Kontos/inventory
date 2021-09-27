@@ -54,10 +54,28 @@ class StorageSpec extends Specification {
 		new File(NON_EXISTING_PATH).readLines() == ["Buddha statue,kdhfo8374HLKD,69.99"]
 	}
 
+	def 'append two items in csv format to new file'() {
+		given: 'two items'
+		Item item_1 = new Item("A", "a", 4.95)
+		Item item_2 = new Item("B", "b", 9.95)
+		
+		and: 'a Storage object linked to a new file'
+		Storage storage  = new Storage(NON_EXISTING_PATH)
+
+		when: 'appending the item to the storage'
+		storage.append(item_1)
+		storage.append(item_2)
+
+		then: 'the file linked to the storage contains this item in csv format'
+		new File(NON_EXISTING_PATH).readLines() == ["Buddha statue,kdhfo8374HLKD,69.99",
+													"A,a,4.95",
+													"B,b,9.95"]
+	}
+	
 	//TODO more that an item
 
 	//TODO read
-
+	
 	def cleanupSpec() {
 		new File(NON_EXISTING_PATH).delete()
 	}

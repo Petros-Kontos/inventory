@@ -28,14 +28,14 @@ public class Storage {
 	 * @throws IOException if a problem occurs during the save process
 	 */
 	public void append(Item item) throws IOException {
-		FileWriter fw = new FileWriter(path);
+		FileWriter fw = new FileWriter(path, true);
 		fw.append(itemToCsv(item));
 		fw.close();
 	}
 
 	private String itemToCsv(Item item) {
-		return String.format("%s,%s,%s", item.getName(), item.getSerialNo(), item.getValue());
-//		return item.getName() + "," + item.getSerialNo() + "," + item.getValue() + '\n';
+//		return String.format("%s,%s,%s,%n", item.getName(), item.getSerialNo(), item.getValue(), '\n');
+		return item.getName() + "," + item.getSerialNo() + "," + item.getValue() + '\n';
 	}
 
 //	/**
