@@ -2,18 +2,20 @@ package inventory;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 import java.io.IOException;
 
+/**
+ * The Storage class abstracts the process of saving the inventory items between sessions.
+ */
 public class Storage {
 
 	private String path;
 
 	/**
-	 *
-	 * @param path
-	 * @throws IOException
+	 * Creates a storage object, associated to a file path.
+	 * 
+	 * @param path The path to the storage file. Can be either an existing or a new file.
+	 * @throws IOException if there is a problem with the file path
 	 */
 	public Storage(String path) throws IOException {
 		File file = new File(path);
@@ -22,7 +24,7 @@ public class Storage {
 	}
 
 	/**
-	 * Save an item to a CSV format in a file.
+	 * Saves an item in CSV format to a file.
 	 *
 	 * @param item the item to be stored
 	 * @throws IOException if a problem occurs during the save process
