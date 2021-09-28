@@ -71,8 +71,6 @@ class StorageSpec extends Specification {
 													"A,a,4.95",
 													"B,b,9.95"]
 	}
-	
-	//TODO more that an item
 
 	//TODO read
 	
