@@ -6,8 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
-import java.io.*;
-import java.lang.*;
 import java.util.*;
 
 /**
