@@ -72,19 +72,21 @@ class StorageSpec extends Specification {
 													"B,b,9.95"]
 	}
 
-	//TODO read
+	def 'read two items from storage file'() {
+		
+		given: 'a Storage object linked to a new file (has contents from previous tests)'
+		Storage storage  = new Storage(NON_EXISTING_PATH)
+		
+		when: 'reading the file contents'
+		def output = storage.read();
+		
+		then: 'the output matches the file content from the previous tests'
+		output == ["Buddha statue,kdhfo8374HLKD,69.99",
+					"A,a,4.95",
+					"B,b,9.95"]
+	}
 	
 	def cleanupSpec() {
 		new File(NON_EXISTING_PATH).delete()
 	}
-
-
-	//Data
-	// creates a new file if the file does not exist
-	// appends a String (line) representing an item on the file
-	// read the file content
-
-
-
-
 }

@@ -1,8 +1,14 @@
 package inventory;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
+import java.util.Scanner;
+import java.io.*;
+import java.lang.*;
+import java.util.*;
 
 /**
  * The Storage class abstracts the process of saving the inventory items between sessions.
@@ -40,18 +46,22 @@ public class Storage {
 		return item.getName() + "," + item.getSerialNo() + "," + item.getValue() + '\n';
 	}
 
-//	/**
-//	 *
-//	 * @return
-//	 * @throws FileNotFoundException
-//	 */
-//	public String read() throws FileNotFoundException {
-//		File file = new File(path);
-//		Scanner scanner = new Scanner(file);
-//		String data = scanner.nextLine();
-//		scanner.close();
-//		return data;
-//	}
+	/**
+	 * Reads the storage file and returns the lines as a list of strings.
+	 * 
+	 * @param array An empty string array
+	 * @throws FileNotFoundException when the file is not found
+	 */
+	public List<String> read(String[] array) throws FileNotFoundException {
+		File file = new File(path);
+		List<String> lines = new ArrayList<String>(Arrays.asList(array));
+		Scanner scanner = new Scanner(file);
+		while (scanner.hasNextLine()) {
+            lines.add(scanner.nextLine());
+        }
+		scanner.close();
+		return lines;
+	}
 }
 
 
