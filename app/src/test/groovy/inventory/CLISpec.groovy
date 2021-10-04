@@ -1,5 +1,6 @@
 package inventory
 
+import spock.lang.Ignore
 import spock.lang.Specification
 
 class CLISpec extends Specification {
@@ -30,8 +31,38 @@ class CLISpec extends Specification {
 		actualPrompt == expectedPrompt	
 	}
 	
-	def "check valid inputs"() {
-		given: "a new CLI object and three inputs"
+	def "get item name prompt"() {
+		given: 'a new CLI object and an expected item name prompt'
+		def CLI = new CLI()
+		def expectedPrompt = "Please enter an item name:"	
+		when: 'we get the prompt'
+		def actualPrompt = CLI.getNamePrompt()
+		then: 'the actual prompt matches the expected prompt'
+		actualPrompt == expectedPrompt
+	}
+	
+	def 'get item serial number prompt'() {
+		given: 'a new CLI object and an expected item name prompt'
+		def CLI = new CLI()
+		def expectedPrompt = "Please enter an item serial number:"	
+		when: 'we get the prompt'
+		def actualPrompt = CLI.getSerialNoPrompt()
+		then: 'the actual prompt matches the expected prompt'
+		actualPrompt == expectedPrompt
+	}
+	
+	def 'get item value'() {
+		given: 'a new CLI object and an expected item name prompt'
+		def CLI = new CLI()
+		def expectedPrompt = 'Please enter the item value:'
+		when: 'we get the prompt'
+		def actualPrompt = CLI.getValuePrompt()
+		then: 'the actual prompt matches the expected prompt'
+		actualPrompt == expectedPrompt
+	}
+	
+	def 'check valid inputs'() {
+		given: "a new CLI object and three valid inputs"
 		def CLI = new CLI()
 		String name = "item"
 		String serialNo = "kj897hF"
@@ -39,5 +70,17 @@ class CLISpec extends Specification {
 		
 		expect: "validation is successful"
 		CLI.validate(name, serialNo, value) == true;
+	}
+	
+	@Ignore
+	def "check invalid inputs"() {
+		given: "a new CLI object and three invalid inputs"
+		def CLI = new CLI()
+		String name = "item"
+		String serialNo = "kj897hF"
+		String value = "59.99"
+		
+		expect: "validation is unsuccessful"
+		CLI.validate(name, serialNo, value) == false;
 	}
 }
