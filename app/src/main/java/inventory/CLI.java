@@ -12,4 +12,8 @@ public class CLI {
 	public String getPrompt() {
 		return prompt;
 	}
+	
+	public boolean validate(String name, String serialNo, double value) {
+		return true;
+	}
 }

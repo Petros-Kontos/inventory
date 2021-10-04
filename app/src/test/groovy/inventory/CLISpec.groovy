@@ -29,4 +29,15 @@ class CLISpec extends Specification {
 		then: 'the actual prompt matches the expected prompt'
 		actualPrompt == expectedPrompt	
 	}
+	
+	def "check valid inputs"() {
+		given: "a new CLI object and three inputs"
+		def CLI = new CLI()
+		String name = "item"
+		String serialNo = "kj897hF"
+		double value = 59.99
+		
+		expect: "validation is successful"
+		CLI.validate(name, serialNo, value) == true;
+	}
 }
