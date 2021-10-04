@@ -12,6 +12,18 @@ public class CLI {
 		return true;
 	}
 	
+	public boolean validateName(String name) {
+		return true;
+	}
+	
+	public boolean validateSerialNo(String serialNo) {
+		return true;
+	}
+	
+	public boolean validateValue(double value) {
+		return true;
+	}
+	
 	public String getGreeting() {
 		return greeting; 
 	}

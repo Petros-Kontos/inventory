@@ -61,6 +61,30 @@ class CLISpec extends Specification {
 		actualPrompt == expectedPrompt
 	}
 	
+	def 'check valid name'() {
+		given: "a new CLI object and valid name input"
+		def CLI = new CLI()
+		String name = "item"
+		expect: "validation is successful"
+		CLI.validateName(name) == true;
+	}
+	
+	def 'check valid serial number'() {
+		given: "a new CLI object and valid serial number input"
+		def CLI = new CLI()
+		String serialNo = "kj897hF"
+		expect: "validation is successful"
+		CLI.validateSerialNo(serialNo) == true;
+	}
+	
+	def 'check valid value'() {
+		given: "a new CLI object and valid value input"
+		def CLI = new CLI()
+		double value = 59.99
+		expect: "validation is successful"
+		CLI.validateValue(value) == true;
+	}
+	
 	def 'check valid inputs'() {
 		given: "a new CLI object and three valid inputs"
 		def CLI = new CLI()
