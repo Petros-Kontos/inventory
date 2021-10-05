@@ -24,6 +24,11 @@ public class CLI {
 		return true;
 	}
 	
+	public double convertValue(String rawValue) {
+		double value = Double.parseDouble(rawValue);
+		return value;
+	}
+	
 	public String getGreeting() {
 		return greeting; 
 	}

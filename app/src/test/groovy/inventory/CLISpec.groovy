@@ -61,9 +61,13 @@ class CLISpec extends Specification {
 		actualPrompt == expectedPrompt
 	}
 	
-	@Ignore
 	def 'convert raw value input to double'() {
-		
+		given: 'a new CLI object and an expected item name prompt'
+		def CLI = new CLI()
+		when: 'inputting a String value'
+		def result = CLI.convertValue("59.99")
+		then: 'the output is the equivalent double'
+		result == 59.99
 	}
 	
 	def 'check valid name'() {
