@@ -1,17 +1,21 @@
 package inventory
 
+import spock.lang.Stepwise
+
 import java.awt.image.ImagingOpException
 
 import java.io.File;
 import spock.lang.Ignore
 import spock.lang.IgnoreRest
 import spock.lang.Specification
-
+//TODO: names of the test methods
+@Stepwise
 class StorageSpec extends Specification {
 
 	static final String NON_EXISTING_PATH = 'src/test/resources/nonExistingFile.txt'
 	static final String EXISTING_PATH = 'src/test/resources/existingFile.txt'
 	static final File file = new File(EXISTING_PATH)
+
 
 	def 'a Storage object creates a file on disk if it does not exist'() {
 		when: 'creating a new Storage for a new file path'
@@ -21,12 +25,15 @@ class StorageSpec extends Specification {
 		(new File(NON_EXISTING_PATH)).exists() == true
 	}
 
-	def 'a Storage object is instantiated with a path to an existing file and does not overwrite the file'() {
-		when: 'instantiating a new storage object that is given a path to an existing file'
+	def 'when Storage receives an existing file the content of that file remains unchanged during the creation of the Storage object'() {
+		given: 'content of an existing file'
+		def initialFileContent = fileContentFrom(EXISTING_PATH)
+
+		when: 'a Storage object that is given an existing file'
 		def storage = new Storage(EXISTING_PATH)
 
 		then: 'the content of the existing file has not been overwritten'
-		new Scanner(file).nextLine() == "Hello World"
+		new Scanner(file).nextLine() == initialFileContent
 	}
 
 	def 'a problem occurs when creating a Storage object'() {
@@ -36,7 +43,7 @@ class StorageSpec extends Specification {
 		when: 'creating a new storage object'
 		new Storage(invalidPath)
 
-		then: 'an exception in thrown'
+		then: 'an exception is thrown'
 		thrown(IOException.class)
 	}
 
@@ -85,7 +92,11 @@ class StorageSpec extends Specification {
 					"A,a,4.95",
 					"B,b,9.95"]
 	}
-	
+
+	private def fileContentFrom(def path) {
+		new File(path).readLines().first()
+	}
+
 	def cleanupSpec() {
 		new File(NON_EXISTING_PATH).delete()
 	}

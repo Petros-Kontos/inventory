@@ -39,6 +39,7 @@ public class Storage {
 		fw.close();
 	}
 
+	//TODO:is conversion to csv responsibility of the storage class
 	private String itemToCsv(Item item) {
 //		return String.format("%s,%s,%s,%n", item.getName(), item.getSerialNo(), item.getValue(), '\n');
 		return item.getName() + "," + item.getSerialNo() + "," + item.getValue() + '\n';

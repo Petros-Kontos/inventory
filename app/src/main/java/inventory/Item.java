@@ -4,10 +4,12 @@ package inventory;
  * The item class is the core abstraction of the inventory app.
  * An item's properties are its name, serial number and price (value).
  */
+//TODO: Should we validate values
 public class Item {
 
 	private String name;
 	private String serialNo;
+	//TODO: double or BigDecimal ?
 	private double value;
 
 	/**

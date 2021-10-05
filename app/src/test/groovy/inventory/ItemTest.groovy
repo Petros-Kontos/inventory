@@ -3,7 +3,7 @@ package inventory
 import spock.lang.Specification
 
 class ItemTest extends Specification {
-	
+	//TODO: name of the test method
 	def "file contents match constructor arguments"() {
 		
 		setup: "store some testing values and instantiate an item object with them"
