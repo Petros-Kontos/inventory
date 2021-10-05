@@ -8,3 +8,4 @@ app/.classpath
 app/.project
 app/.settings/
 app/bin/
+.idea/workspace.xml
