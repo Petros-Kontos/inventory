@@ -61,6 +61,11 @@ class CLISpec extends Specification {
 		actualPrompt == expectedPrompt
 	}
 	
+	@Ignore
+	def 'convert raw value input to double'() {
+		
+	}
+	
 	def 'check valid name'() {
 		given: "a new CLI object and valid name input"
 		def CLI = new CLI()
@@ -90,7 +95,7 @@ class CLISpec extends Specification {
 		def CLI = new CLI()
 		String name = "item"
 		String serialNo = "kj897hF"
-		double value = 59.99
+		String value = "59.99"
 		
 		expect: "validation is successful"
 		CLI.validate(name, serialNo, value) == true;

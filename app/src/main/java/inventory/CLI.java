@@ -8,7 +8,7 @@ public class CLI {
 	private String serialNoPrompt = "Please enter an item serial number:";
 	private String valuePrompt = "Please enter the item value:";
 	
-	public boolean validate(String name, String serialNo, double value) {
+	public boolean validate(String name, String serialNo, String value) {
 		return true;
 	}
 	
