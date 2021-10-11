@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class Storage {
 
-	private String path;
+	private static String path;
 
 	/**
 	 * Creates a storage object, associated to a file path.
@@ -51,7 +51,8 @@ public class Storage {
 	 * @param array An empty string array
 	 * @throws FileNotFoundException when the file is not found
 	 */
-	public List<String> read(String[] array) throws FileNotFoundException {
+	public static List<String> read() throws FileNotFoundException {
+		String[] array = {};
 		File file = new File(path);
 		List<String> lines = new ArrayList<String>(Arrays.asList(array));
 		Scanner scanner = new Scanner(file);

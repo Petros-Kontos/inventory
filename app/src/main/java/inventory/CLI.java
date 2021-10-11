@@ -2,11 +2,11 @@ package inventory;
 
 public class CLI {
 	
-	private String greeting = "Welcome to the inventory app!";
-	private String prompt = "Please enter the details of an item:";
-	private String namePrompt = "Please enter an item name:";
-	private String serialNoPrompt = "Please enter an item serial number:";
-	private String valuePrompt = "Please enter the item value:";
+	private static String greeting = "Welcome to the inventory app!";
+	private static String prompt = "Please enter the details of an item:";
+	private static String namePrompt = "Please enter an item name:";
+	private static String serialNoPrompt = "Please enter an item serial number:";
+	private static String valuePrompt = "Please enter the item value:";
 	
 	public boolean validate(String name, String serialNo, String value) {
 		return true;
@@ -29,23 +29,23 @@ public class CLI {
 		return value;
 	}
 	
-	public String getGreeting() {
+	public static String getGreeting() {
 		return greeting; 
 	}
 	
-	public String getPrompt() {
+	public static String getPrompt() {
 		return prompt;
 	}
 	
-	public String getNamePrompt() {
+	public static String getNamePrompt() {
 		return namePrompt;
 	}
 	
-	public String getSerialNoPrompt() {
+	public static String getSerialNoPrompt() {
 		return serialNoPrompt;
 	}
 	
-	public String getValuePrompt() {
+	public static String getValuePrompt() {
 		return valuePrompt;
 	}
 }
